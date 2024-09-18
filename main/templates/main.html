@@ -1,2 +1,34 @@
-<h1>{{ shop }}<h1>
-<p>By {{ name }} - {{ class }}<p>
+{% extends 'base.html' %} {% block content %}
+
+<h1>{{ shop }}</h1>
+<p>By {{ name }} - {{ class }}</p>
+
+{% if not shops %}
+<p>Belum ada data mood pada mental health tracker.</p>
+{% else %}
+<table>
+    <tr>
+        <th>Mood Name</th>
+        <th>Time</th>
+        <th>Feeling</th>
+        <th>Mood Intensity</th>
+    </tr>
+
+    {% for shop in shops %}
+    <tr>
+        <td>{{mood_entry.mood}}</td>
+        <td>{{mood_entry.time}}</td>
+        <td>{{mood_entry.feelings}}</td>
+        <td>{{mood_entry.mood_intensity}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+<br />
+
+<a href="{% url 'main:create_shop' %}">
+    <button>Add New Mood Entry</button>
+</a>
+
+{% endblock content %}
