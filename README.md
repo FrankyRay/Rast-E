@@ -1,8 +1,23 @@
 # Rast-E
 Simple *E-Commerce* app for buy/sell things, even though it can't :P.
 
-## QnAs
+## Tugas 3 | QnAs
+### Data Delivery
 
+### JSON vs XML
+JSON sudah pasti lebih baik dibandingkan XML. Selain dari JSON yang strukturnya lebih simple dan mudah untuk dibaca, JSON juga lebih ringan. XML memiliki salah satu vulnerability, yaitu XML E--- Entity (XXE) Injection.
+
+JSON juga lebih popular karena simple dan mudah dibaca. JSON juga sudah didukung oleh banyak bahasa.
+
+### Fungsi `is_valid()`
+Penggunaan method `is_valid()` digunakan sebagai validasi data yang akan di-*post* oleh user. Jika data tidak sesuai dengan ketentuan yang sudah ada, misalnya input harga yang seharusnya angka malah berupa huruf, maka form tersebut tidak valid. Method tersebut sangat diperlukan untuk mencegah adanya error dikarenakan salah input.
+
+### Fungsi `csrf_token`
+
+### Implementasi *Check-list* (again)
+Kelanjutan dari proyek "Rast-E" dimulai dari pembuatan HTML dasar dan beberapa template. Selain itu, melakukan beberapa perubahan pada model untuk penambahan ID menggunakan UUID versi 4. Saya juga melakukan penambahan pada rute untuk mendapatkan data `shop`.
+
+## Tugas 2 | QnAs
 ### Implementasi *Check-list*
 Pembuatan proyek "Rast-E" dimulai dengan pembuatan repo pada Github. Setelah itu, repo tersebut di-*clone* ke local computel. Setelah melakukan *cloning*, maka dilakukan pembuatan project Django
 
