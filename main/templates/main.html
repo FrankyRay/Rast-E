@@ -4,22 +4,22 @@
 <p>By {{ name }} - {{ class }}</p>
 
 {% if not shops %}
-<p>Belum ada data mood pada mental health tracker.</p>
+<p>Belum ada data shop!</p>
 {% else %}
 <table>
     <tr>
-        <th>Mood Name</th>
-        <th>Time</th>
-        <th>Feeling</th>
-        <th>Mood Intensity</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Rating</th>
     </tr>
 
     {% for shop in shops %}
     <tr>
-        <td>{{mood_entry.mood}}</td>
-        <td>{{mood_entry.time}}</td>
-        <td>{{mood_entry.feelings}}</td>
-        <td>{{mood_entry.mood_intensity}}</td>
+        <td>{{shops.name}}</td>
+        <td>{{shops.price}}</td>
+        <td>{{shops.description}}</td>
+        <td>{{shops.rating}}</td>
     </tr>
     {% endfor %}
 </table>
@@ -29,6 +29,11 @@
 
 <a href="{% url 'main:create_shop' %}">
     <button>Add New Mood Entry</button>
+</a>
+
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+<a href="{% url 'main:logout' %}">
+    <button>Logout</button>
 </a>
 
 {% endblock content %}
