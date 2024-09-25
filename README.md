@@ -1,6 +1,19 @@
 # Rast-E
 Simple *E-Commerce* app for buy/sell things, even though it can't :P.
 
+## Tugas 4 | QnAs
+### `HttpResponseRedirect()` vs `redirect()`
+`HttpResponseRedirect` merupakan gabungan dari `HttpResponse` dan `redirect()`, dimana akan menjalankan HTTP Response sebuah data dan men-direct user ke suatu url. Sedangkan redirect hanya men-redirect user ke url page saja.
+
+### Hubungan `Product` dengan `User`
+Dalam penggunaan web, seringkali sebuah data hanya dapat diakses oleh satu user saja, tidak bisa diakses oleh orang lain. Sehingga perlu ada penghubung data User dengan Product, yaitu assign sebuah data pada Produk yang berisi sebuah User sebagai kepemilikan data.
+
+### Authentication dan Authorization
+Authentication adalah pengecekan apakah itu user atau bukan. Authorization merupakan pemberian otoritas terhadap website.
+
+### Login dan Cookies
+Django mengingat pengguna yang telah login melalui sebuah Cookies. Cookies menyimpan sebuah data tentang aktifitas user terhadap web tersebut. Cookies tersebut aman untuk digunakan, KECUALI data cookies diketahui oleh orang lain, sehingga data user lain bisa diakses dengan mudah.
+
 ## Tugas 3 | QnAs
 ### Data Delivery
 
