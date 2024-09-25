@@ -18,7 +18,7 @@ def show_main(request):
             'shop': 'Rast-E',
             'name': 'Franky Raymarcell Sinaga',
             'class': 'PBP F',
-            'shops': Shop.objects.all(),
+            'shops': Shop.objects.filter(user=request.user),
             'user': request.user.username,
             'last_login': request.COOKIES['last_login'],
     }

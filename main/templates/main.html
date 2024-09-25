@@ -24,10 +24,10 @@
 
     {% for shop in shops %}
     <tr>
-        <td>{{shops.name}}</td>
-        <td>{{shops.price}}</td>
-        <td>{{shops.description}}</td>
-        <td>{{shops.rating}}</td>
+        <td>{{shop.name}}</td>
+        <td>{{shop.price}}</td>
+        <td>{{shop.description}}</td>
+        <td>{{shop.rating}}</td>
     </tr>
     {% endfor %}
 </table>
@@ -36,7 +36,7 @@
 <br />
 
 <a href="{% url 'main:create_shop' %}">
-    <button>Add New Mood Entry</button>
+    <button>Add New Shop</button>
 </a>
 
 {% endblock content %}
