@@ -3,6 +3,14 @@
 <h1>{{ shop }}</h1>
 <p>By {{ name }} - {{ class }}</p>
 
+<h5>Halo {{ user }}!</h5>
+<p>
+    Sesi terakhir login: {{ last_login }}
+    <a href="{% url 'main:logout' %}">
+        <button>Logout</button>
+    </a>
+</p>
+
 {% if not shops %}
 <p>Belum ada data shop!</p>
 {% else %}
@@ -29,11 +37,6 @@
 
 <a href="{% url 'main:create_shop' %}">
     <button>Add New Mood Entry</button>
-</a>
-
-<h5>Sesi terakhir login: {{ last_login }}</h5>
-<a href="{% url 'main:logout' %}">
-    <button>Logout</button>
 </a>
 
 {% endblock content %}
