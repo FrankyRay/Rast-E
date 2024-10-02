@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% include 'navbar.html' %}
 
 <h1>{{ shop }}</h1>
 <p>By {{ name }} - {{ class }}</p>
@@ -11,8 +11,8 @@
     </a>
 </p>
 
-{% if not shops %}
-<p>Belum ada data shop!</p>
+{% if not products %}
+<p>Belum ada data product!</p>
 {% else %}
 <table>
     <tr>
@@ -22,12 +22,22 @@
         <th>Rating</th>
     </tr>
 
-    {% for shop in shops %}
+    {% for product in products %}
     <tr>
-        <td>{{shop.name}}</td>
-        <td>{{shop.price}}</td>
-        <td>{{shop.description}}</td>
-        <td>{{shop.rating}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.rating}}</td>
+        <td>
+            <a href="{% url 'main:edit_product' product.id %}">
+                <button>Edit</button>
+            </a>
+        </td>
+        <td>
+            <a href="{% url 'main:delete_product' product.id %}">
+                <button>Delete</button>
+            </a>
+        </td>
     </tr>
     {% endfor %}
 </table>
@@ -35,8 +45,8 @@
 
 <br />
 
-<a href="{% url 'main:create_shop' %}">
-    <button>Add New Shop</button>
+<a href="{% url 'main:create_product' %}">
+    <button>Add New Product</button>
 </a>
 
 {% endblock content %}
