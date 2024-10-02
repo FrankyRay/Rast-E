@@ -21,30 +21,52 @@
                     <a class="nav-link" aria-current="page" href="#">About</a>
                 </li>
             </ul>
-            <div>
+            <ul class="navbar-nav d-flex">
                 {% if user.is_authenticated %}
-                <span>Welcoome, {{ user.username }}</span>
-                <a
-                    href="{% url 'main:logout' %}"
-                    class="btn btn-outline-danger"
-                >
-                    Logout
-                </a>
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        Welcome,
+                        <span class="text-success">{{ user.username }}</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <span
+                                class="dropdown-item disabled"
+                                aria-disabled="true"
+                            >
+                                Sesi terakhir login: <br />{{ last_login }}
+                            </span>
+                        </li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li>
+                            <a
+                                href="{% url 'main:logout' %}"
+                                class="dropdown-item text-danger nav-item"
+                            >
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item"></li>
                 {% else %}
-                <a
-                    href="{% url 'main:login' %}"
-                    class="btn btn-outline-primary"
-                >
-                    Login
-                </a>
-                <a
-                    href="{% url 'main:register' %}"
-                    class="btn btn-outline-secondary"
-                >
-                    Register
-                </a>
+                <li>
+                    <a
+                        href="{% url 'main:login' %}"
+                        class="btn btn-outline-primary nav-item"
+                    >
+                        Login
+                    </a>
+                </li>
                 {% endif %}
-            </div>
+            </ul>
         </div>
     </div>
 </nav>

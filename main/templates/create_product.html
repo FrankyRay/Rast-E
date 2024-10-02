@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+<title>Edit Mood</title>
+{% endblock meta %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<div class="min-vh-100 vh-100 d-flex align-items-center justify-content-center w-100 bg-white-90 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="w-25">
+    <h2 class="mt-6 text-center text-black fs-2 fw-bold text-black-90">Edit Product</h2>
+
+    <div>
+      <form method="POST" class="card p-2">
+          <div class="card-body">
+              {% csrf_token %}
+              {% for field in form %}
+                  <div>
+                      <label for="{{ field.id_for_label }}" class="form-title">
+                          {{ field.label }}
+                      </label>
+                      <input id="{{ field.id }}" name="{{ field.name }}" type="{{ field.widget_type }}" class="form-control">
+                      {% if field.help_text %}
+                          <p class="form-text">{{ field.help_text }}</p>
+                      {% endif %}
+                      {% for error in field.errors %}
+                          <p class="form-text text-danger">{{ error }}</p>
+                      {% endfor %}
+                  </div>
+              {% endfor %}
+          </div>
+          <div class="card-body">
+              <button type="submit" class="btn btn-primary">
+                  Create New Product
+              </button>
+          </div>
+      </form>
+  </div>
+  </div>
+</div>
+{% endblock %}

@@ -15,7 +15,7 @@ from django.urls import reverse
 @login_required(login_url='/login')
 def show_main(request):
     context = {
-            'user': request.user.username,
+            'user': request.user,
             'last_login': request.COOKIES['last_login'],
             'shop': 'Rast-E',
             'name': 'Franky Raymarcell Sinaga',
@@ -35,14 +35,14 @@ def create_product(request):
         return redirect('main:show_main')
 
     context = { "form": form }
-    return render(request, "create_shop.html", context)
+    return render(request, "create_product.html", context)
 
 def edit_product(request, id):
     # Get mood entry berdasarkan id
-    mood = ProductForm.objects.get(pk = id)
+    product = Product.objects.get(pk = id)
 
     # Set mood entry sebagai instance dari form
-    form = ProductForm(request.POST or None, instance=mood)
+    form = ProductForm(request.POST or None, instance=product)
 
     if form.is_valid() and request.method == "POST":
         # Simpan form dan kembali ke halaman awal
@@ -50,7 +50,7 @@ def edit_product(request, id):
         return HttpResponseRedirect(reverse('main:show_main'))
 
     context = {'form': form}
-    return render(request, "edit_mood.html", context)
+    return render(request, "edit_product.html", context)
 
 def delete_product(request, id):
     # Get mood berdasarkan id

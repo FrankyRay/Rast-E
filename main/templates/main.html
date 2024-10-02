@@ -1,52 +1,67 @@
-{% extends 'base.html' %} {% block content %} {% include 'navbar.html' %}
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'navbar.html' %}
 
-<h1>{{ shop }}</h1>
-<p>By {{ name }} - {{ class }}</p>
-
-<h5>Halo {{ user }}!</h5>
-<p>
-    Sesi terakhir login: {{ last_login }}
-    <a href="{% url 'main:logout' %}">
-        <button>Logout</button>
-    </a>
-</p>
+<div></div>
 
 {% if not products %}
-<p>Belum ada data product!</p>
+<div class="p-2">
+    <div class="card text-center">
+        <div class="card-header">Oh no</div>
+        <div class="card-body">
+            <img
+                src="{% static 'image/pib_sad.webp' %}"
+                class="card-img-top w-25"
+                alt="Puss In Cat: Sad Image"
+            />
+            <p class="card-text">
+                Tidak ada produk. Tambahkan untuk menampilkan produk disini
+            </p>
+            <a href="{% url 'main:create_product' %}" class="btn btn-primary">
+                Produk baru
+            </a>
+        </div>
+    </div>
+</div>
 {% else %}
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Description</th>
-        <th>Rating</th>
-    </tr>
-
-    {% for product in products %}
-    <tr>
-        <td>{{product.name}}</td>
-        <td>{{product.price}}</td>
-        <td>{{product.description}}</td>
-        <td>{{product.rating}}</td>
-        <td>
-            <a href="{% url 'main:edit_product' product.id %}">
-                <button>Edit</button>
+<div class="p-2">
+    <div class="card">
+        <div class="card-header">Oh no</div>
+        <div class="card-body">
+            {% for product in products %}
+            <div class="card" style="width: 18rem">
+                <!-- <img src="..." class="card-img-top" alt="..." /> -->
+                <div class="card-body">
+                    <h3 class="card-title">{{ product.name }}</h3>
+                    <hl />
+                    <p class="card-text">
+                        {{ product.description }}
+                        <br />
+                        <span>{{ product.price }} | {{ product.rating }}/5</span>
+                    </p>
+                    <p></p>
+                    <div class="d-flex flex-row-reverse gap-2">
+                        <a
+                            href="{% url 'main:edit_product' product.id %}"
+                            class="btn btn-outline-primary"
+                            >Edit</a
+                        >
+                        <a
+                            href="{% url 'main:delete_product' product.id %}"
+                            class="btn btn-outline-danger"
+                            >Delete</a
+                        >
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="p-2">
+            <a href="{% url 'main:create_product' %}" class="btn btn-primary">
+                Produk baru
             </a>
-        </td>
-        <td>
-            <a href="{% url 'main:delete_product' product.id %}">
-                <button>Delete</button>
-            </a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
-{% endif %}
-
-<br />
-
-<a href="{% url 'main:create_product' %}">
-    <button>Add New Product</button>
-</a>
-
-{% endblock content %}
+        </div>
+    </div>
+</div>
+{% endif %} {% endblock content %}
