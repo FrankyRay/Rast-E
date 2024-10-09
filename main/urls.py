@@ -1,5 +1,5 @@
 from django.urls import path
-from main.views import create_product, edit_product, delete_product, \
+from main.views import create_product, edit_product, delete_product, create_product_ajax, \
                        logout_user, register, login_user, \
                        show_json, show_json_by_id, show_main, show_xml, show_xml_by_id
 
@@ -9,6 +9,7 @@ urlpatterns = [
     path("", show_main, name="show_main"),
 
     path("create-product", create_product, name="create_product"),
+    path("create-product-ajax", create_product_ajax, name="create_product_ajax"),
     path("edit-product/<uuid:id>", edit_product, name="edit_product"),
     path("delete-product/<uuid:id>", delete_product, name="delete_product"),
 

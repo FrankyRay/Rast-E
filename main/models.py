@@ -1,6 +1,7 @@
 from uuid import uuid4
 
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 class Product(models.Model):
@@ -8,5 +9,5 @@ class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     description = models.TextField()
-    price = models.IntegerField()
-    rating = models.IntegerField()
+    price = models.PositiveIntegerField()
+    rating = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
